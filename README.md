@@ -1,4 +1,4 @@
-# NP 2018 Project1 Demo Script (beta)
+# NP Project1 Demo Script (beta)
 
 ### Important information: 
 1. This is a sample demo scipt. It is just a sample, the final one might be different.
@@ -32,14 +32,14 @@
     - Contains source code of commands (noop, removetag...) and test.html
 
 ### Scenario
-- Assume there are two directories, np_2018_project1_demo and 0756000 inside a private directroy on NP server.
+- Assume there are two directories, np_project1_demo_sample and 0756000 inside a private directroy on NP server.
 - My npshell is inside 0756000 directory
-- I am now inside np_2018_project1_demo
+- I am now inside np_project1_demo_sample
 
 ```
   bash$ ./demo.sh ../0756000/npshell
   ...
-  ... # Some messeges generated while compiling or other commands
+  ... # Some messeges generated while compiling and setting up environment
   ...
   ===== Test case 1 =====
   Your answer is correct
