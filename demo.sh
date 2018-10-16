@@ -12,10 +12,10 @@ gmake clean
 
 for i in $( seq 1 6 ); do
   gmake
+  echo "[1;34m===== Test case ${i} =====[m"
   cd work_dir
   env -i ../${SHELL_PATH} < ../test_case/${i}.txt > ../output/${i}.txt 2>&1
   cd ..
-  echo "[1;34m===== Test case ${i} =====[m"
   diff -w output/${i}.txt answer/${i}.txt > /dev/null
   if [ $? -eq 0 ]; then
     echo "Your answer is [0;32mcorrect[m"
