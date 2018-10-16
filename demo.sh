@@ -17,12 +17,12 @@ for i in $( seq 1 6 ); do
   cd ..
   echo "[1;34m===== Test case ${i} =====[m"
   diff -w output/${i}.txt answer/${i}.txt > /dev/null
-  if [ $? -eq 1 ]; then
-    echo "Your answer is [0;31mwrong[m"
-    wrong_cases="${wrong_cases} ${i}"
-  else
+  if [ $? -eq 0 ]; then
     echo "Your answer is [0;32mcorrect[m"
     correct_cases="${correct_cases} ${i}"
+  else
+    echo "Your answer is [0;31mwrong[m"
+    wrong_cases="${wrong_cases} ${i}"
   fi
 done
 
