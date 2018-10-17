@@ -7,14 +7,21 @@ if [ -z ${SHELL_PATH} ] || [ ! -x ${SHELL_PATH} ]; then
   exit 1
 fi
 
+SHELL_PATH=$( readlink -f ${SHELL_PATH} )
+
+TEST_CASE_START=1
+
+[ -n "$2" ] && TEST_CASE_START=$2
+
 mkdir -p output
 gmake clean
 
-for i in $( seq 1 6 ); do
+for i in $( seq ${TEST_CASE_START} 6 ); do
   gmake
   echo "[1;34m===== Test case ${i} =====[m"
   cd work_dir
-  env -i ../${SHELL_PATH} < ../test_case/${i}.txt > ../output/${i}.txt 2>&1
+  rm -f ../output/${i}.txt
+  env -i stdbuf -o 0 -e 0 ${SHELL_PATH} < ../test_case/${i}.txt > ../output/${i}.txt 2>&1
   cd ..
   diff -w output/${i}.txt answer/${i}.txt > /dev/null
   if [ $? -eq 0 ]; then
